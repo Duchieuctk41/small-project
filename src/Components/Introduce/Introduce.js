@@ -12,8 +12,15 @@ class Introduce extends Component {
             {id: 'loz', name: 'Hieu', age: 18},
             {id: 'cac', name: 'Huong', age: 19},
             {id: 'chim', name: 'Hoang', age: 16}
-        ]
+        ],
+        showPerson: false
     }
+
+    showmePerson = () => {
+        const doesShow = this.state.showPerson;
+        this.setState({showPerson: !doesShow});
+    };
+
 
     changedHandler = (event, id) => {
         const personIndex = this.state.persons.findIndex( person => person.id == id);
@@ -27,11 +34,17 @@ class Introduce extends Component {
     }
 
     render () {
+        let persons = null;
+        if(this.state.showPerson) {
+            persons = (
+                <Informations persons={this.state.persons} changed={this.changedHandler} />
+            );
+        }
         return (
             <Aux>
                 <h2>Hi everyone, I'm React</h2>
-                <Button />
-                <Informations persons={this.state.persons} changed={this.changedHandler} />
+                <Button showPerson={this.state.showPerson} clicked={this.showmePerson} />
+                {persons}
             </Aux>
         );
     }
