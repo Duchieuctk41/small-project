@@ -22,7 +22,10 @@ const buildControls = props => (
             />
         ))}
         
-        <button>Order</button>
+        <button 
+            className={classes.OrderButton}
+            onClick={props.order}
+        >Order</button>
     </div>
 );
 
