@@ -17,8 +17,9 @@ class Introduce extends Component {
     }
 
     showmePerson = () => {
-        const doesShow = this.state.showPerson;
-        this.setState({showPerson: !doesShow});
+        const doesShow = this.state.showPerson; // false
+        this.setState({showPerson: !doesShow}); // true
+        console.log(this.state.showPerson); //false
     };
 
 
