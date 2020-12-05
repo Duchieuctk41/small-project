@@ -4,12 +4,15 @@ import Random from './Components/Random/Random';
 import Introduce from './Components/Introduce/Introduce';
 import classes from './App.css';
 import Layout from './hoc/Layout/Layout';
+import BurgerBuilder from './container/BurgerBuilder/BurgerBuilder';
 
 class App extends Component {
   render() {
     return (
       <div className={classes.App}>
-        <Layout />
+        <Layout>
+          <BurgerBuilder />
+        </Layout>
       </div>
     );
   }
