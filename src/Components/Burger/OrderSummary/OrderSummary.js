@@ -1,13 +1,20 @@
 import React from 'react';
 import Aux from '../../../hoc/Aux';
 
-const orderSummary = props => (
-    <Aux>
-        <p>Your order</p>
-        <ul>
+const orderSummary = props => {
+    const ingredientsSummary = Object.keys(props.ingredients)
+        .map(igKey => {
+        return <li key={igKey}><span style={{textTransform: 'capitalize'}}>{igKey}</span>: {props.ingredients[igKey]}</li>
+        })
 
-        </ul>
-    </Aux>
-);
+    return (
+        <Aux>
+            <p>Your order</p>
+            <ul>
+                {ingredientsSummary}
+            </ul>
+        </Aux>
+    );
+}
 
 export default orderSummary;
