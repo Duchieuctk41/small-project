@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import Aux from '../Aux';
 
-import BurgerBuilder from '../../container/BurgerBuilder/BurgerBuilder';
+import Toolbar from '../../UI/Toolbar/Toolbar';
+import classes from './Layout.css';
 
-class Layout extends Component {
-    render() {
-        return (
-            <Aux>
-                <BurgerBuilder />
-            </Aux>
-        );
-    }
-}
+const layout = (props) => (
+    <Aux>
+        <Toolbar />
+        <main className={classes.Content}>
+            {props.children}
+        </main>
+    </Aux>
+);
 
-export default Layout;
+export default layout;
