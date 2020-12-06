@@ -3,14 +3,31 @@ import Aux from '../Aux';
 
 import Toolbar from '../../UI/Toolbar/Toolbar';
 import classes from './Layout.css';
+import SideDrawer from '../../Components/SideDrawer/SideDrawer';
 
-const layout = (props) => (
-    <Aux>
-        <Toolbar />
-        <main className={classes.Content}>
-            {props.children}
-        </main>
-    </Aux>
-);
+class Layout extends Component {
+    state = {
+        showSideDrawer: true
+    }
 
-export default layout;
+    showSideDrawerHandler = () => {
+        this.setState({showSideDrawer: false});
+        console.log('lozz');
+    }
+
+    render () {
+
+        return (
+            <Aux>
+                <Toolbar />
+                <SideDrawer open={this.state.showSideDrawer} 
+                    closed={this.showSideDrawerHandler} />
+                <main className={classes.Content}>
+                    {this.props.children}
+                </main>
+            </Aux>
+        )
+    }   
+}
+
+export default Layout;
