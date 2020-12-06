@@ -7,19 +7,22 @@ import SideDrawer from '../../Components/SideDrawer/SideDrawer';
 
 class Layout extends Component {
     state = {
-        showSideDrawer: true
+        showSideDrawer: false
     }
 
     showSideDrawerHandler = () => {
         this.setState({showSideDrawer: false});
-        console.log('lozz');
+    }
+
+    clickedSideDrawerToggle = () => {
+        this.setState({showSideDrawer: !this.state.showSideDrawer});
     }
 
     render () {
 
         return (
             <Aux>
-                <Toolbar />
+                <Toolbar clickedSideToggle={this.clickedSideDrawerToggle} />
                 <SideDrawer open={this.state.showSideDrawer} 
                     closed={this.showSideDrawerHandler} />
                 <main className={classes.Content}>
