@@ -6,10 +6,11 @@
     margin-top: 4px;
     background-color: tomato;
     float: left;
+    
 }
 
 .green {
-    background-color: darkgreen;
+    background-color: green;
 }
 
 .yellow {
@@ -17,7 +18,7 @@
 }
 
 .red {
-    background-color: salmon;
+    background-color: red;
 }
 
 .black {

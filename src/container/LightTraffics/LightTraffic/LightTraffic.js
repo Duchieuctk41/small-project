@@ -9,22 +9,22 @@ const lightTraffic = props => {
 
     switch (props.styleColor) {
         case 'red':
-            trafficStyle = <div className={arrayClass.join(' ')}></div>
+    trafficStyle = <div className={arrayClass.join(' ')}>{props.children}</div>
             console.log('do');
             break;
         case 'yellow':
             arrayClass = [classes.Circle, classes.yellow];
-            trafficStyle = <div className={arrayClass.join(' ')}></div>
+            trafficStyle = <div className={arrayClass.join(' ')}>{props.children}</div>
             console.log('vang');
             break;
         case 'green':
             arrayClass = [classes.Circle, classes.green];
-            trafficStyle = <div className={arrayClass.join(' ')}></div>
+            trafficStyle = <div className={arrayClass.join(' ')}>{props.children}</div>
             console.log('xanh');
             break;
         case 'black':
             arrayClass = [classes.Circle, classes.black];
-            trafficStyle = <div className={arrayClass.join(' ')}></div>
+            trafficStyle = <div className={arrayClass.join(' ')}>{props.children}</div>
             break;
         default:
             trafficStyle = null;
