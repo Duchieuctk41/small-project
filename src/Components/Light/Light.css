@@ -1,0 +1,8 @@
+.Light {
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    background-color: lightcoral;
+    margin-left: 15px;
+    margin-top: 10px;
+}

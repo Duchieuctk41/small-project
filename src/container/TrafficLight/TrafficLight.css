@@ -1,0 +1,7 @@
+.TrafficLight {
+    height: 100px;
+    width: 300px;
+    margin: 25% auto;
+    background-color: lawngreen;
+    display: flex;
+}

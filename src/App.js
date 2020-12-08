@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
+import Aux from './hoc/Aux';
+import TrafficLight from './container/TrafficLight/TrafficLight';
+
 import classes from './App.css';
-import LightTraffics from './container/LightTraffics/LightTraffics';
 
 class App extends Component {
   render() {
     return (
-      <div className={classes.App}>
-        <LightTraffics />
-      </div>
+      <Aux className={classes.App}>
+        <TrafficLight />
+      </Aux>
     );
   }
 }
