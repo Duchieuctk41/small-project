@@ -2,7 +2,19 @@
     width: 80px;
     height: 80px;
     border-radius: 80px;
-    background-color: lightcoral;
+    background-color: black;
     margin-left: 15px;
     margin-top: 10px;
+}
+
+.Red {
+    background-color: red;
+}
+
+.Green {
+    background-color: green;
+}
+
+.Yellow {
+    background-color: yellow;
 }
