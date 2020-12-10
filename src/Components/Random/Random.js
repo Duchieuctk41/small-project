@@ -1,41 +1,39 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Input from './Input/Input';
 import Result from './Result/Result';
 
-class Random extends Component {
-    
-    state = {
-        min: 1,
-        max: 100,
-        result: 1
+function Random() {
+    const [min, setMin] = useState(0);
+    const [max, setMax] = useState(100);
+    const [result, setResult] = useState(1);
+    const clickHandler = (min, max) => {
+        let result1 = Math.floor(min + (Math.random()) * (max-min));
+        console.log(result1);
+        setResult(result1);
+        console.log(min);
+        console.log(result);
+        
     }
 
-    clickHandler(min, max) {
-        let result = Math.floor(min + (Math.random()) * (max-min));
-        console.log(result);
-        this.setState({result: result});
-    };
-
-    handleClick = () => {
+    const handleClick = () => {
         console.log('this is:', this);
       }
 
-    render () {
+    
         return (
             <div>
                 <h3>Random</h3>
                 <label>Min</label>
-                <Input reference={this.state.min} />
+                <Input reference={min} />
                 <label>Max</label>
-                <Input reference={this.state.max} />
+                <Input reference={max} />
                 <button 
-                    onClick={() => this.clickHandler(this.state.min, this.state.max)}>
+                    onClick={() => clickHandler(min, max)}>
                         Click me
                 </button>
-                <Result>{this.state.result}</Result>
+                <Result>{result}</Result>
             </div>
         );
-    }
 }
 
 export default Random;
