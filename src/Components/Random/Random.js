@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from './Input/Input';
 import Result from './Result/Result';
 
-function Random() {
+const random = () => {
     const [clicks, setClicks] = useState({
         min: 0,
         max: 100,
@@ -42,4 +42,4 @@ function Random() {
         );
 }
 
-export default Random;
+export default random;
