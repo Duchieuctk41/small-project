@@ -23,12 +23,16 @@ const trafficLight = () => {
             changeHandler();
         }, lightDurations);
         setCounter(counter - 1);
+        console.log(counter);
     }, 1000);
 
     return () => {
+        if (counter === 1) {
+            setCounter(0);
+        }
       clearInterval(timer);
     };
-  });
+  }, [counter]);
 
   function changeHandler () {
     switch (clicks.next) {
@@ -45,8 +49,8 @@ const trafficLight = () => {
                     
             };
             setColorIndex(newColor);
-            console.log("doooooooooooooooo");
             setCounter(timeCountDown);
+            console.log("doooooooooooooooo");
             
             break;
             case 'green':
@@ -78,8 +82,8 @@ const trafficLight = () => {
                         
                     };
                     setColorIndex(newColor);
-                    console.log("vangggggggggggg");
                     setCounter(timeCountDown);
+                    console.log("vangggggggggggg");
                 break;         
     }
   }
