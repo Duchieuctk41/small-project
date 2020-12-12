@@ -1,14 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
-function Example() {
+const example = () => {
     const [count, setCount] = useState(0);
+
+    useEffect(()=> {
+        document.title = `You clicked ${count} times`;
+        return () => {
+            if (count == 10) {
+                setCount(0);
+            }
+        };
+    });
+
     return (
         <div>
-            <p>Ban click vao day {count} lan</p>
+            <p>ban da clicked {count} lan</p>
             <button onClick={() => setCount(count + 1)} >Click me</button>
         </div>
     )
 }
 
 
-export default Example;
+export default example;
