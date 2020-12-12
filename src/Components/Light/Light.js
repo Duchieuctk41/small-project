@@ -11,17 +11,14 @@ const light = props => {
         case 'red':
             arrayClass = [classes.Light, classes.Red];
             divLight = <div className={arrayClass.join(' ')}>{timeLight}</div>;
-            console.log("red");
             break;
         case 'green':
             arrayClass = [classes.Light, classes.Green];
             divLight = <div className={arrayClass.join(' ')}>{timeLight}</div>;
-            console.log("green");
             break;
         case 'yellow':
                 arrayClass = [classes.Light, classes.Yellow];
                 divLight = <div className={arrayClass.join(' ')}>{timeLight}</div>;
-                console.log("yellow");
                 break;
         default:
             divLight = <div className={arrayClass.join(' ')}><CountDown /></div>;
