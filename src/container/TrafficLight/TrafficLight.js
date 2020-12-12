@@ -11,36 +11,47 @@ const trafficLight = () => {
     green: "",
     yellow: "",
     now: "red",
+    time: 0,
     next: "green"
   });
 
+  const [counter, setCounter] = useState(0);
+
   useEffect(() => {
-      
-    const timer = setTimeout(() => {
-        changeHandler();
-    }, lightDurations);
+    const timer = setInterval(() => {
+        setTimeout(() => {
+            changeHandler();
+        }, lightDurations);
+        setCounter(counter - 1);
+    }, 1000);
+
     return () => {
-      clearTimeout(timer);
+      clearInterval(timer);
     };
   });
 
   function changeHandler () {
     switch (clicks.next) {
         case 'red':
-            let timeCountDown = 10;
+            let timeCountDown = 1;
+            lightDurations = 1000;
             let newColor = {
-                red: "red",
-                green: "",
-                yellow: "",
-                now: "red",
-                time: timeCountDown,
-                next: "green"
+                    red: "red",
+                    green: "",
+                    yellow: "",
+                    now: "red",
+                    time: timeCountDown,
+                    next: "green"
+                    
             };
-            lightDurations = 3000;
             setColorIndex(newColor);
+            console.log("doooooooooooooooo");
+            setCounter(timeCountDown);
+            
             break;
             case 'green':
-                timeCountDown = 8;
+                timeCountDown = 3;
+                lightDurations = 3000;
                 newColor = {
                     red: "",
                     green: "green",
@@ -48,23 +59,28 @@ const trafficLight = () => {
                     now: "green",
                     time: timeCountDown,
                     next: "yellow"
+                    
                 };
-                lightDurations = 2000;
                 setColorIndex(newColor);
+                setCounter(timeCountDown);
+
                 break;
                 case 'yellow':
-                    timeCountDown = 5;
+                    timeCountDown = 2;
+                    lightDurations = 2000;
                     newColor = {
                         red: "",
                         green: "",
                         yellow: "yellow",
                         now: "yellow",
                         time: timeCountDown,
-                        next: "red"
+                        next: "red",
+                        
                     };
-                    lightDurations = 1000;
                     setColorIndex(newColor);
-                    break;          
+                    console.log("vangggggggggggg");
+                    setCounter(timeCountDown);
+                break;         
     }
   }
 
@@ -84,9 +100,9 @@ switch(clicks.now) {
 }
 return (
     <div className={arrayClass.join(' ')}>
-        <Light nowColor={clicks.red} inTime={clicks.time}/>
-        <Light nowColor={clicks.green} inTime={clicks.time}/>
-        <Light nowColor={clicks.yellow} inTime={clicks.time}/>
+        <Light nowColor={clicks.red} inTime={counter}/>
+        <Light nowColor={clicks.green} inTime={counter}/>
+        <Light nowColor={clicks.yellow} inTime={counter}/>
     </div>
 );
 };
