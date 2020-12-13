@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Button from '../../UI/ButtonRestaurant/Button';
 import Statics from './Statics/Statics';
 import Aux from '../../hoc/Aux';
+import Input from '../../UI/Input/Input';
 
 const typeButton = [
     {label: 'Good', type: 'good'},
@@ -56,8 +57,10 @@ const restaurant = (props) => {
                     {ctrl.label}
                 </Button>
             ))}
+            <Input review="cai lozz"/>
             <h3>Thống kê</h3>
             {votedOfUser}
+            <h3>Đánh giá của khách hàng</h3>
         </Aux>
     )
 }
