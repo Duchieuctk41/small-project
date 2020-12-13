@@ -31,6 +31,23 @@ const restaurant = (props) => {
         setVoteds(updateVoteds);
     }
 
+    let votedOfUser = Object.keys(voteds)
+    .map(voted => {
+        if (voteds[voted] > 0) {
+        return <Statics key={voted}>{voted} : {voteds[voted]}</Statics>
+        }  
+    })
+    .reduce((array, element) => {
+        if (element !== undefined) {
+            return array.concat(element);
+        }
+        return array;
+    }, []);
+
+    if(votedOfUser.length === 0) {
+        votedOfUser = <Statics>Có con cằc đánh giá nào đâu!</Statics>
+    }
+
     return (
         <Aux>
             <h3>Nhà hàng 5 sao!!</h3>
@@ -40,9 +57,7 @@ const restaurant = (props) => {
                 </Button>
             ))}
             <h3>Thống kê</h3>
-            <Statics>Good: {voteds.good}</Statics>
-            <Statics>Medium: {voteds.medium}</Statics>
-            <Statics>Bad: {voteds.bad}</Statics>
+            {votedOfUser}
         </Aux>
     )
 }
