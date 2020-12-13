@@ -3,6 +3,10 @@ import Button from '../../UI/ButtonRestaurant/Button';
 import Statics from './Statics/Statics';
 import Aux from '../../hoc/Aux';
 import Input from '../../UI/Input/Input';
+import Comment from './Comment/Comment';
+import Summit from './Button/Button';
+
+import classes from './Restaurant.css';
 
 const typeButton = [
     {label: 'Good', type: 'good'},
@@ -10,13 +14,19 @@ const typeButton = [
     {label: 'Bad', type: 'bad'}
 ]
 
-const restaurant = (props) => {
+const restaurant = () => {
 
     const [voteds, setVoteds] = useState({
         good: 0,
         medium: 0,
         bad: 0
     });
+    const [status, setStatus] = useState("");
+    const [listStatus, setListStatus] = useState([
+        {status: "Bình luận của khách hàng"}
+    ]);
+
+    const placeholder = "Bình luận sản phẩm đi";
 
     useEffect(() => {
 
@@ -31,6 +41,25 @@ const restaurant = (props) => {
         updateVoteds[type] = updateCount;
         setVoteds(updateVoteds);
     }
+
+    const commentHandler = () => {
+        const statused = status;
+        const newListStatus = [...listStatus];
+        if (status !== "") {
+            newListStatus.push({status: statused});
+            setListStatus(newListStatus);
+            setStatus("");
+        }
+
+        
+    }
+
+    let listComment = listStatus.map(status => {
+        console.log(status.status);
+        if (listStatus.length > 0) {
+            return <Comment key={status.status}>{status.status}</Comment>;
+        }
+    });
 
     let votedOfUser = Object.keys(voteds)
     .map(voted => {
@@ -50,17 +79,20 @@ const restaurant = (props) => {
     }
 
     return (
-        <Aux>
-            <h3>Nhà hàng 5 sao!!</h3>
+        <Aux className={classes.Restaurant}>
+            <h2 className={classes.color}>Nhà hàng 5 sao!!</h2>
             {typeButton.map(ctrl => (
                 <Button key={ctrl.label} clicked={() => handlerClicked(ctrl.type)}>
                     {ctrl.label}
                 </Button>
             ))}
-            <Input review="cai lozz"/>
+            
             <h3>Thống kê</h3>
             {votedOfUser}
             <h3>Đánh giá của khách hàng</h3>
+            <Input placeholder={placeholder} statuss={status} changed={(event) => setStatus(event.target.value)}/>
+            <Summit summited={commentHandler}>Comment</Summit>
+            {listComment}
         </Aux>
     )
 }

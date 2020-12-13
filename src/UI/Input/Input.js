@@ -1,7 +1,7 @@
 import React from 'react';
 
 const input = (props) => (
-    <input value={props.review}></input>
+    <input placeholder={props.placeholder}  value={props.statuss} onChange={props.changed}></input>
 )
 
 export default input;
